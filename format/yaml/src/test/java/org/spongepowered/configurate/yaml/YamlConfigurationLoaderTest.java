@@ -28,8 +28,10 @@ import org.spongepowered.configurate.ConfigurationNode;
 import org.spongepowered.configurate.loader.ConfigurationLoader;
 
 import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.IOException;
+import java.io.StringWriter;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -47,17 +49,23 @@ public class YamlConfigurationLoaderTest {
     @Test
     void testSimpleLoading() throws ConfigurateException {
         final URL url = getClass().getResource("/example.yml");
+        final StringWriter out = new StringWriter();
         final ConfigurationLoader<CommentedConfigurationNode> loader = YamlConfigurationLoader.builder()
-                .url(url).build();
+                .url(url)
+                .sink(() -> new BufferedWriter(out)).build();
         final ConfigurationNode node = loader.load();
         assertEquals("unicorn", node.node("test", "op-level").raw());
         assertEquals("dragon", node.node("other", "op-level").raw());
         assertEquals("dog park", node.node("other", "location").raw());
 
 
+        loader.save(node);
+        System.out.println(out.toString());
+
         final List<Map<String, List<String>>> fooList = new ArrayList<>(node.node("foo")
             .getList(new TypeToken<Map<String, List<String>>>() {}));
         assertEquals(0, fooList.get(0).get("bar").size());
+
     }
 
     @Test
