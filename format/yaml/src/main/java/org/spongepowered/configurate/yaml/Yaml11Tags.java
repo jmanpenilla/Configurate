@@ -24,6 +24,8 @@ import java.util.regex.Pattern;
 /**
  * Standard types defined on the <a href="https://yaml.org/type/">yaml.org
  * tag repository</a>.
+ *
+ * @since 4.1.0
  */
 public final class Yaml11Tags {
 
@@ -38,6 +40,7 @@ public final class Yaml11Tags {
      * A binary data tag.
      *
      * @see <a href="https://yaml.org/type/binary.html">tag:yaml.org,2002:binary</a>
+     * @since 4.1.0
      */
     public static final Tag BINARY = Tag.builder()
             .uri(yamlOrg("binary"))
@@ -52,6 +55,7 @@ public final class Yaml11Tags {
      *     will only support true|false, we will treat those as the default
      *     output format.
      * @see <a href="https://yaml.org/type/bool.html">tag:yaml.org,2002:bool</a>
+     * @since 4.1.0
      */
     public static final Tag BOOL = Tag.builder()
             .uri(yamlOrg("bool"))
@@ -65,6 +69,7 @@ public final class Yaml11Tags {
      * A floating-point number.
      *
      * @see <a href="https://yaml.org/type/float.html">tag:yaml.org,2002:float</a>
+     * @since 4.1.0
      */
     public static final Tag FLOAT = Tag.builder()
             .uri(yamlOrg("float"))
@@ -79,6 +84,7 @@ public final class Yaml11Tags {
      * An integer.
      *
      * @see <a href="https://yaml.org/type/int.html">tag:yaml.org,2002:int</a>
+     * @since 4.1.0
      */
     public static final Tag INT = Tag.builder()
             .uri(yamlOrg("int"))
@@ -97,6 +103,7 @@ public final class Yaml11Tags {
      * are fully implemented.</p>
      *
      * @see <a href="https://yaml.org/type/merge.html">tag:yaml.org,2002:merge</a>
+     * @since 4.1.0
      */
     public static final Tag MERGE = Tag.builder()
             .uri(yamlOrg("merge"))
@@ -112,6 +119,7 @@ public final class Yaml11Tags {
      * likely never be encountered in an in-memory representation.</p>
      *
      * @see <a href="https://yaml.org/type/null.html">tag:yaml.org,2002:null</a>
+     * @since 4.1.0
      */
     public static final Tag NULL = Tag.builder()
             .uri(yamlOrg("null"))
@@ -125,6 +133,7 @@ public final class Yaml11Tags {
      * Any string.
      *
      * @see <a href="https://yaml.org/type/str.html">tag:yaml.org,2002:str</a>
+     * @since 4.1.0
      */
     public static final Tag STR = Tag.builder()
             .uri(yamlOrg("str"))
@@ -136,6 +145,7 @@ public final class Yaml11Tags {
      * A timestamp, containing date, time, and timezone.
      *
      * @see <a href="https://yaml.org/type/timestamp.html">tag:yaml.org,2002:timestamp</a>
+     * @since 4.1.0
      */
     public static final Tag TIMESTAMP = Tag.builder()
             .uri(yamlOrg("timestamp"))

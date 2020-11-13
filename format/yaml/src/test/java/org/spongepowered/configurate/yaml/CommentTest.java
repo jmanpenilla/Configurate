@@ -33,8 +33,8 @@ public class CommentTest implements YamlTest {
                 + "\"i'm a string\""
         );
 
-        assertEquals("Hello world", node.getComment());
-        assertEquals("i'm a string", node.getValue());
+        assertEquals("Hello world", node.comment());
+        assertEquals("i'm a string", node.raw());
     }
 
     @Test
@@ -45,8 +45,8 @@ public class CommentTest implements YamlTest {
                     + "    cat: purrs\n"
         );
 
-        assertEquals("purrs", node.getNode("test", "cat").getValue());
-        assertEquals("meow", node.getNode("test", "cat").getComment());
+        assertEquals("purrs", node.node("test", "cat").raw());
+        assertEquals("meow", node.node("test", "cat").comment());
     }
 
     @Test
@@ -60,9 +60,9 @@ public class CommentTest implements YamlTest {
                     + "- fourth\n"
         );
 
-        assertNull(test.getNode(0).getComment());
-        assertEquals("i matter less", test.getNode(1).getComment());
-        assertEquals("we skipped one", test.getNode(3).getComment());
+        assertNull(test.node(0).comment());
+        assertEquals("i matter less", test.node(1).comment());
+        assertEquals("we skipped one", test.node(3).comment());
     }
 
     @Test
@@ -77,11 +77,11 @@ public class CommentTest implements YamlTest {
                         + "  test2: goodbye\n"
         );
 
-        final CommentedConfigurationNode child = test.getNode("blah", 0);
-        assertFalse(child.isVirtual());
-        assertEquals("beginning sequence", child.getComment());
-        assertEquals("first on map entry", child.getNode("test").getComment());
-        assertEquals("on second mapping", child.getNode("test2").getComment());
+        final CommentedConfigurationNode child = test.node("blah", 0);
+        assertFalse(child.virtual());
+        assertEquals("beginning sequence", child.comment());
+        assertEquals("first on map entry", child.node("test").comment());
+        assertEquals("on second mapping", child.node("test2").comment());
     }
 
     // flow collections are a bit trickier
@@ -99,9 +99,9 @@ public class CommentTest implements YamlTest {
                         + "}\n"
         );
 
-        assertEquals("hello", test.getNode("test").getComment());
-        assertNull(test.getNode("uncommented").getComment());
-        assertEquals("hi there", test.getNode("last").getComment());
+        assertEquals("hello", test.node("test").comment());
+        assertNull(test.node("uncommented").comment());
+        assertEquals("hi there", test.node("last").comment());
     }
 
     @Test
@@ -116,9 +116,9 @@ public class CommentTest implements YamlTest {
                         + "]"
         );
 
-        assertEquals("on list", test.getComment());
-        assertEquals("first", test.getNode(0).getComment());
-        assertEquals("second", test.getNode(1).getComment());
+        assertEquals("on list", test.comment());
+        assertEquals("first", test.node(0).comment());
+        assertEquals("second", test.node(1).comment());
     }
 
     @Test
@@ -130,8 +130,8 @@ public class CommentTest implements YamlTest {
     @Test
     void testWriteScalarCommented() {
         final CommentedConfigurationNode node = CommentedConfigurationNode.root()
-                .setValue("test")
-                .setComment("i have a comment");
+                .raw("test")
+                .comment("i have a comment");
 
         assertEquals(
                 "# i have a comment\n"

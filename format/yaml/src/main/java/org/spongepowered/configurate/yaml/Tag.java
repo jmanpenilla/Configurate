@@ -27,6 +27,7 @@ import java.util.regex.Pattern;
  * A YAML 1.1/1.2 tag
  *
  * @apiNote Design based on §3.2.1.1 of the YAML 1.1 spec
+ * @since 4.1.0
  */
 @AutoValue
 public abstract class Tag {
@@ -35,6 +36,7 @@ public abstract class Tag {
      * Create a new builder for a {@link Tag}.
      *
      * @return a new builder
+     * @since 4.1.0
      */
     public static Tag.Builder builder() {
         return new AutoValue_Tag.Builder();
@@ -47,6 +49,7 @@ public abstract class Tag {
      * The canonical tag URI.
      *
      * @return tag uri, with `tag:` schema
+     * @since 4.1.0
      */
     public abstract URI uri();
 
@@ -54,6 +57,7 @@ public abstract class Tag {
      * The native type that maps to this tag.
      *
      * @return native type for tag
+     * @since 4.1.0
      */
     public abstract Type nativeType();
 
@@ -62,6 +66,7 @@ public abstract class Tag {
      *
      * @return match pattern
      * @apiNote See §3.3.2 of YAML 1.1 spec
+     * @since 4.1.0
      */
     public abstract Pattern targetPattern();
 
@@ -69,6 +74,7 @@ public abstract class Tag {
      * Whether this tag is a global tag with a full namespace or a local one.
      *
      * @return if this is a global tag
+     * @since 4.1.0
      */
     public final boolean global() {
         return uri().getScheme().equals("tag");
@@ -76,6 +82,8 @@ public abstract class Tag {
 
     /**
      * A builder for {@link Tag Tags}.
+     *
+     * @since 4.1.0
      */
     @AutoValue.Builder
     public abstract static class Builder {
@@ -85,6 +93,7 @@ public abstract class Tag {
          *
          * @param url canonical tag URI
          * @return this builder
+         * @since 4.1.0
          */
         public abstract Builder uri(URI url);
 
@@ -94,6 +103,7 @@ public abstract class Tag {
          *
          * @param tagUrl canonical tag URI
          * @return this builder
+         * @since 4.1.0
          */
         public final Builder uri(final String tagUrl) {
             try {
@@ -113,6 +123,7 @@ public abstract class Tag {
          *
          * @param type type for the value
          * @return this builder
+         * @since 4.1.0
          */
         public abstract Builder nativeType(Type type);
 
@@ -122,6 +133,7 @@ public abstract class Tag {
          *
          * @param targetPattern pattern to match
          * @return this builder
+         * @since 4.1.0
          */
         public abstract Builder targetPattern(Pattern targetPattern);
 
@@ -129,6 +141,7 @@ public abstract class Tag {
          * Create a new tag from the provided parameters.
          *
          * @return a new tag
+         * @since 4.1.0
          */
         public abstract Tag build();
 

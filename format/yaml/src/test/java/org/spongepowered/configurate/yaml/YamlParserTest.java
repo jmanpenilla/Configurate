@@ -16,7 +16,6 @@
  */
 package org.spongepowered.configurate.yaml;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -31,8 +30,8 @@ public class YamlParserTest implements YamlTest {
     @Test
     void testEmptyDocument() throws IOException {
         final ConfigurationNode result = parseString("");
-        assertTrue(result.isEmpty());
-        assertNull(result.getValue());
+        assertTrue(result.empty());
+        assertNull(result.raw());
     }
 
     @Test

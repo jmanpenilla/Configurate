@@ -179,7 +179,7 @@ sourceSets.configureEach set@{
                 )
                 "cpd"(
                     "encoding" to "UTF-8",
-                    "minimumtokencount" to 105,
+                    "minimumtokencount" to 121,
                     "outputFile" to outputFile.get().asFile,
                     "skipLexicalErrors" to true
                 ) {

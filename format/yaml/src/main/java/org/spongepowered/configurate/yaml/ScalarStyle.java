@@ -24,6 +24,8 @@ import java.util.Map;
 
 /**
  * Style that can be used to represent a scalar.
+ *
+ * @since 4.1.0
  */
 public enum ScalarStyle {
 
@@ -31,6 +33,8 @@ public enum ScalarStyle {
      * A double-quoted string.
      *
      * <p><pre>"hello world"</pre></p>
+     *
+     * @since 4.1.0
      */
     DOUBLE_QUOTED(DumperOptions.ScalarStyle.DOUBLE_QUOTED),
 
@@ -38,10 +42,32 @@ public enum ScalarStyle {
      * A single-quoted string.
      *
      * <p><pre>'hello world'</pre></p>
+     *
+     * @since 4.1.0
      */
     SINGLE_QUOTED(DumperOptions.ScalarStyle.SINGLE_QUOTED),
+
+    /**
+     * String without any quotation.
+     *
+     * <p>This may be ambiguous with non-string types.</p>
+     *
+     * @since 4.1.0
+     */
     UNQUOTED(DumperOptions.ScalarStyle.PLAIN),
+
+    /**
+     * Folded scalar.
+     *
+     * @since 4.1.0
+     */
     FOLDED(DumperOptions.ScalarStyle.FOLDED),
+
+    /**
+     * Literal scalar.
+     *
+     * @since 4.1.0
+     */
     LITERAL(DumperOptions.ScalarStyle.LITERAL)
     ;
 

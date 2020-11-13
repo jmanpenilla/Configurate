@@ -67,14 +67,13 @@ public interface YamlTest {
         final StringWriter writer = new StringWriter();
         try {
             YamlConfigurationLoader.builder()
-                    .setSink(() -> new BufferedWriter(writer))
-                    .setNodeStyle(preferredStyle)
+                    .sink(() -> new BufferedWriter(writer))
+                    .nodeStyle(preferredStyle)
                     .build().save(input);
         } catch (IOException e) {
             fail(e);
         }
         return writer.toString();
     }
-
 
 }

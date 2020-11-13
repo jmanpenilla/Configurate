@@ -26,6 +26,8 @@ import java.util.Map;
 
 /**
  * A collection of tags that are understood when reading a document.
+ *
+ * @since 4.1.0
  */
 public final class TagRepository {
 
@@ -38,6 +40,7 @@ public final class TagRepository {
      *
      * @param tags known tags
      * @return new tag repository
+     * @since 4.1.0
      */
     public static TagRepository of(final List<Tag> tags) {
         return new TagRepository(UnmodifiableCollections.copyOf(tags));
@@ -62,6 +65,7 @@ public final class TagRepository {
      *
      * @param scalar scalar to test
      * @return the first matching tag
+     * @since 4.1.0
      */
     public @Nullable Tag forInput(final String scalar) {
         for (final Tag tag : this.tags) {
