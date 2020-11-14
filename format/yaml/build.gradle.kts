@@ -4,6 +4,12 @@ import org.spongepowered.configurate.build.useAutoValue
 
 plugins {
     id("org.spongepowered.configurate.build.component")
+    groovy // For writing tests
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 description = "YAML format loader for Configurate"
@@ -13,6 +19,11 @@ dependencies {
     api(core())
     // When updating snakeyaml, check ConfigurateScanner for changes against upstream
     implementation("org.yaml:snakeyaml:1.+")
+
+    testImplementation("org.codehaus.groovy:groovy:3.+:indy")
+    testImplementation("org.codehaus.groovy:groovy-nio:3.+:indy")
+    testImplementation("org.codehaus.groovy:groovy-test-junit5:3.+:indy")
+    testImplementation("org.codehaus.groovy:groovy-templates:3.+:indy")
 }
 
 tasks.compileJava {

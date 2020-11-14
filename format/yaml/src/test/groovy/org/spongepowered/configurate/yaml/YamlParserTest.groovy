@@ -14,30 +14,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.spongepowered.configurate.yaml;
+package org.spongepowered.configurate.yaml
 
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNull
+import static org.junit.jupiter.api.Assertions.assertThrows
+import static org.junit.jupiter.api.Assertions.assertTrue
 
-import org.junit.jupiter.api.Test;
-import org.spongepowered.configurate.ConfigurationNode;
+import org.junit.jupiter.api.Test
+import org.spongepowered.configurate.ConfigurationNode
 
-import java.io.IOException;
+import java.io.IOException
 
-public class YamlParserTest implements YamlTest {
+class YamlParserTest implements YamlTest {
 
     @Test
     void testEmptyDocument() throws IOException {
-        final ConfigurationNode result = parseString("");
-        assertTrue(result.empty());
-        assertNull(result.raw());
+        final ConfigurationNode result = parseString("")
+        assertTrue(result.empty())
+        assertNull(result.raw())
     }
 
     @Test
     void testDuplicateKeysForbidden() throws IOException {
         assertTrue(assertThrows(IOException.class, () -> parseString("{duplicated: 1, duplicated: 2}"))
-                .getMessage().contains("Duplicate key"));
+                .getMessage().contains("Duplicate key"))
     }
 
 }

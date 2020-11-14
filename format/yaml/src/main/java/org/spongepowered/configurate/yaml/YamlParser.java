@@ -189,7 +189,7 @@ final class YamlParser extends ParserImpl {
             if (!child.virtual()) { // duplicate keys are forbidden (3.2.1.3)
                 throw makeError(node, "Duplicate key '" + child.key() + "' encountered!", null);
             }
-            value(node.node(child));
+            value(child);
         }
 
         requireEvent(Event.ID.MappingEnd);
